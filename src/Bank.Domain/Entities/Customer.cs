@@ -20,6 +20,11 @@ public class Customer : IAggregateRoot
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
+    // Parameterless constructor for EF Core
+    private Customer()
+    {
+    }
+
     private Customer(
         Guid id,
         string firstName,

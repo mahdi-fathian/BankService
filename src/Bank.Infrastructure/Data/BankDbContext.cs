@@ -54,10 +54,6 @@ public class BankDbContext : DbContext
             {
                 vo.Property(v => v.Value).HasColumnName("PhoneNumber").HasMaxLength(11).IsRequired();
             });
-
-            // Indexes
-            entity.HasIndex(e => EF.Property<string>(e, "NationalCode")).IsUnique();
-            entity.HasIndex(e => EF.Property<string>(e, "Email")).IsUnique();
         });
 
         // Account configuration
@@ -80,11 +76,6 @@ public class BankDbContext : DbContext
                 vo.Property(v => v.Amount).HasColumnName("BalanceAmount").HasColumnType("decimal(18,2)").IsRequired();
                 vo.Property(v => v.Currency).HasColumnName("BalanceCurrency").HasMaxLength(3).IsRequired();
             });
-
-            // Indexes
-            entity.HasIndex(e => e.AccountNumber).IsUnique();
-            entity.HasIndex(e => e.Iban).IsUnique();
-            entity.HasIndex(e => e.CustomerId);
         });
 
         // Transaction configuration
@@ -109,12 +100,6 @@ public class BankDbContext : DbContext
                 vo.Property(v => v.Amount).HasColumnName("Amount").HasColumnType("decimal(18,2)").IsRequired();
                 vo.Property(v => v.Currency).HasColumnName("Currency").HasMaxLength(3).IsRequired();
             });
-
-            // Indexes
-            entity.HasIndex(e => e.ReferenceNumber).IsUnique();
-            entity.HasIndex(e => e.SourceAccountId);
-            entity.HasIndex(e => e.TargetAccountId);
-            entity.HasIndex(e => e.CreatedAt);
         });
 
         _logger.LogInformation("BankDbContext model created successfully");

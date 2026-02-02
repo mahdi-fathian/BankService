@@ -19,6 +19,11 @@ public class Account : IAggregateRoot
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
+    // Parameterless constructor for EF Core
+    private Account()
+    {
+    }
+
     private Account(
         Guid id,
         Guid customerId,

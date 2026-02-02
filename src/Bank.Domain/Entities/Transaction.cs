@@ -21,6 +21,11 @@ public class Transaction : IAggregateRoot
     public DateTime? CompletedAt { get; private set; }
     public string? FailureReason { get; private set; }
 
+    // Parameterless constructor for EF Core
+    private Transaction()
+    {
+    }
+
     private Transaction(
         Guid id,
         Guid sourceAccountId,
